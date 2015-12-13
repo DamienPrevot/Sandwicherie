@@ -17,8 +17,12 @@
         <section class="container">
             <div class="row">
                 <?php
-                if($view->sqlError)
+                foreach($view->errors as $texte)
                 {
-                    ?><div class="alert alert-danger"><p>Une erreur interne s'est produite.</p></div><?php
+                    if($texte === false)
+                    {
+                        continue;
+                    }
+                    
+                    echo '<div class="alert alert-danger"><p>'.$texte.'</p></div>';
                 }
-            

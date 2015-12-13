@@ -3,13 +3,16 @@
 //Initialisation du tampon de sortie
 ob_start();
 
+define('ROOT_PATH', realpath(__DIR__.'/..'));
+
 //Inclusion de la config et des fonctions
 require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions/safe.php');
 
-//--- SQL ---
-$sqlError = false;
+//Inclusion du système de vue
+require_once(__DIR__.'/view.php');
 
+//--- SQL ---
 try
 {
     //Connexion
@@ -24,11 +27,8 @@ try
 }
 catch(\Exception $e) //Si erreur à la connexion
 {
-    $sqlError = true;
+    $view->errors['sql'] = 'Une erreur interne s\'est produite.';
     trigger_error($e->getMessage(), E_USER_WARNING);
 }
 //--- FIN SQL ---
 
-//Var pour la vue
-$view = new \stdClass;
-$view->sqlError = $sqlError;
