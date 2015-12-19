@@ -1,7 +1,5 @@
 # Sandwicherie en ligne
 
-CRUD (Create, Read, Update, Delete)
-
 Une société de restauration rapide propose à ses clients un service en ligne de commande de sandwichs réalisé par notre agence il y a plusieurs années.
 
 Le site ne correspond aujourd'hui plus au standard actuel et son offre à depuis évoluer. Ce client à refait appel à nous pour faire évoluer son site web.
@@ -41,6 +39,7 @@ Après audit du site actuel, notre lead-developpeur nous a fait parvenir ses reco
 * Utiiisation de versionnement pour le code
 * Faire attention au performences du site web sans Varnish (Un site trop lent de quelques mili-seconde rate des ventes)
 * Schéma des tables SQL à revoir
+* Mise en place d'un système CRUD (Create, Read, Update, Delete) pour les produits.
 
 ## Etude juridique
 Notre service juridique à aussi étudier le site actuel et émit des alertes importante pour le nouveau site.
