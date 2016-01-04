@@ -2,6 +2,7 @@
 
 $view            = new \stdClass;
 $view->file      = '';
+$view->ajax      = false;
 $view->haveAsset = true;
 $view->vars      = new \stdClass;
 $view->errors    = array(); //Possible de faire $view->errors = [];
@@ -54,3 +55,17 @@ register_shutdown_function(function($view)
     return;
 }, $view);
 //--- Déclanchement de la vue ---
+
+set_exception_handler(function($exception)
+{
+    global $view;
+    
+    trigger_error('Exception : '.$exception->getMessage(), E_USER_WARNING);
+    
+    $view->errors[] = 'Une erreur interne est survenue.';
+    
+    if(!$view->ajax && $view->file === '')
+    {
+        $view->file = 'error.php';
+    }
+});
